@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+    # # render => no view template required, rendering objects directly from controller
     def index
         @employees = Employee.all
         respond_to do |format|
@@ -13,7 +14,7 @@ class EmployeesController < ApplicationController
         respond_to do |format|
         format.html
         format.json {render json: @employee.as_json }
-        format.xml {render xml: @employee.as_json}
+        format.xml 
         end
     end
 
