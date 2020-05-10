@@ -1,0 +1,7 @@
+<% @employees.each do |employee|%>
+<p>
+名前:<%= employee.name %><br/>
+部署:<%= employee.department.name %><br/>
+役職レベル：<%= employee.rank %><br/>
+</p>
+<% end %>

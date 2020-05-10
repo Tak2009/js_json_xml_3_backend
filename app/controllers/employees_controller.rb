@@ -1,11 +1,12 @@
 class EmployeesController < ApplicationController
     # # render => no view template required, rendering objects directly from controller. to pass variables to Views, use @, for rendering from controller, no need to use @.
+    # # for json, no view template required as it uses render method in this controller.
     def index
         @employees = Employee.all
         respond_to do |format|
         format.html
         format.json {render json: @employees.as_json(except: [:created_at, :updated_at], root: true, include: {department: {except: [:created_at, :updated_at]}})}
-        format.xml {render xml: @employees.as_json(except: [:created_at, :updated_at], root: true, include: {department: {except: [:created_at, :updated_at]}})}
+        format.xml
         end
     end
 
