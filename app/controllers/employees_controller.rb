@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-    # # render => no view template required, rendering objects directly from controller
+    # # render => no view template required, rendering objects directly from controller. to pass variables to Views, use @, for rendering from controller, no need to use @.
     def index
         @employees = Employee.all
         respond_to do |format|
