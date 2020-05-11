@@ -26,7 +26,8 @@ class EmployeesController < ApplicationController
         # # 関連付しているDepartmentモデルのDepartment”S”テーブルのhierarchyコラムを使って条件の絞り込み
         @employees_a = Employee.includes(:department).where(departments: {hierarchy:"A"})
         @employees_b1 = Employee.includes(:department).where(departments: {hierarchy:"B1"})
-        @employees_b1c3 = Employee.includes(:department).where(departments: {hierarchy:"B1C3"})
+        @employees_b1c3_boss = Employee.includes(:department).where(departments: {hierarchy:"B1C3"}).where(rank: 1)[0]
+        @employees_b1c3 = Employee.includes(:department).where(departments: {hierarchy:"B1C3"}).where(rank: 2)
         @department_a = Department.all.find_by(hierarchy:"A").name # @department_a = Department.all.where(hierarchy:"A")[0].nameで結果は同じ。whereを使うとArrayに保存されるのでindex[]が必要となる
         @department_b1 = Department.all.find_by(hierarchy:"B1").name # @department_a = Department.all.where(hierarchy:"A")[0].nameで結果は同じ。whereを使うとArrayに保存されるのでindex[]が必要となる
         @department_b1c3 = Department.all.find_by(hierarchy:"B1").name # @department_a = Department.all.where(hierarchy:"A")[0].nameで結果は同じ。whereを使うとArrayに保存されるのでindex[]が必要となる
